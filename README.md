@@ -4,7 +4,9 @@ a stupid clicker made in rust and SDL2 to ensure *blazingly* fast performance so
 expect really terrible code practice thsi is just a shitpost
 
 # installation
-idk go figure it yourself lmao!!
 
+idk go figure it yourself lmao!
+
+![glungus](/assets/glungus.png)
 ---
 made with love by niko
