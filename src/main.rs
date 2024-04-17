@@ -7,6 +7,9 @@ use sdl2::ttf;
 use sdl2::image::LoadTexture;
 use std::time::Duration;
 
+fn lerp(start: u32, end: u32, t: f32) -> u32 {
+    (start as f32 + t * (end as f32 - start as f32)) as u32
+}
 pub fn main() {
     let win_w = 500;
     let win_h = 500;
@@ -31,11 +34,12 @@ pub fn main() {
 
     //IMPORTANT. DATA RESEARCH
     let mut clicked: u32 = 0;
+    let mut t: f32;
 
     //IMPORTANT. DATA RENDERING
     let ttfctx = ttf::init().unwrap();
     let font = ttfctx.load_font("assets/Lexend-Bold.ttf", 128).unwrap();
-    let mut text_container = sdl2::rect::Rect::new(0,0,win_w,50);
+    let text_container = sdl2::rect::Rect::new(0,0,win_w,50);
 
     let mut event_poll = ctx.event_pump().unwrap();
     let mut debounce = false;
@@ -52,14 +56,10 @@ pub fn main() {
                     if debounce == false {
                         clicked += 1;
                     }
-                    
                     debounce = true;
-                    container.set_width(300);
-                    container.set_height(300);
+                    
                 },
                 Event::KeyUp { keycode: Some(Keycode::Space), .. } => {
-                    container.set_width(400);
-                    container.set_height(400);
                     debounce = false;
                 }
                 _ => {}
@@ -67,6 +67,23 @@ pub fn main() {
         }
 
         //THIS IS SO FUCKING STUPID
+
+        if debounce == true {
+            t = 0.0;
+            if t < 1.0 {
+                t += 0.1; // Adjust this value to control the speed of the movement.
+                container.set_width(lerp(container.width(), 300, t));
+                container.set_height(lerp(container.height(), 300, t));
+            }
+        } else {
+            t = 0.0;
+            if t < 1.0 {
+                t += 0.1; // Adjust this value to control the speed of the movement.
+                container.set_width(lerp(container.width(), 380, t));
+                container.set_height(lerp(container.height(), 380, t));
+            }
+        }
+
         container.set_x(((win_w - container.width()) / 2).try_into().unwrap());
         container.set_y(((win_h - container.height()) / 2).try_into().unwrap());
 
