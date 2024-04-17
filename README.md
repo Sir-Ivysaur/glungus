@@ -26,4 +26,4 @@ expect really terrible code practice thsi is just a shitpost
 look he's memory safe!! wow
 
 ---
-made with love by niko
+made with love by niko & friends!
