@@ -97,7 +97,11 @@ pub fn main() {
         }
 
         container.set_x(((window_width - container.width()) / 2).try_into().unwrap());
-        container.set_y(((window_height - container.height()) / 2).try_into().unwrap());
+        container.set_y(
+            ((window_height - container.height()) / 2)
+                .try_into()
+                .unwrap(),
+        );
 
         // RENDER GLUNGUS.
         canvas
