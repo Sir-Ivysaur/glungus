@@ -8,5 +8,7 @@ expect really terrible code practice thsi is just a shitpost
 idk go figure it yourself lmao!
 
 ![glungus](/assets/glungus.png)
+look he's memory safe!! wow
+
 ---
 made with love by niko
