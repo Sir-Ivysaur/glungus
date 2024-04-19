@@ -100,7 +100,7 @@ pub fn main() {
                 if clicked % 20 == 0 {
                     glangle = 360.0;
                 } else {
-                    glangle = lerp(glangle as i32, target_angle as i32 , t) as f64;
+                    glangle = lerp(glangle as i32, target_angle as i32, t) as f64;
                 }
             }
         } else {
