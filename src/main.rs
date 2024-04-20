@@ -1,7 +1,21 @@
-use bevy::app::App;
+use bevy::prelude::Commands;
+use bevy::prelude::*;
+
 mod glunger;
 
 fn main() {
-    let mut app = App::new();
-    app.run();
+	App::new()
+		.add_plugins(DefaultPlugins)
+		.add_systems(Startup, setup)
+		.run();
 }
+
+fn setup(
+	mut commands: Commands,
+	asset_server: Res<AssetServer>,
+) {
+	commands.spawn(SpriteBundle {
+		texture: asset_server.load("assets/glungus.png"),
+		..default()
+	});
+}  
